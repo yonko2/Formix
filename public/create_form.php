@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $password = $_POST['form_password'] ?? '';
     $allow_multiple = isset($_POST['allow_multiple']) ? true : false;
     $require_auth = isset($_POST['require_auth']) ? true : false;
-    
+
     if (empty($name)) {
         $message = "Form name is required";
     } else {
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 <div class="container">
     <h2>Create a New Form</h2>
     
-    <?php if ($message): ?>
+    <?php if ($message) : ?>
         <p class="error-message"><?= $message ?></p>
     <?php endif; ?>
     

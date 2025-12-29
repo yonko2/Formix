@@ -21,7 +21,7 @@ $forms = get_user_forms($_SESSION['user_id']);
         </a>
     </div>
     
-    <?php if (empty($forms)): ?>
+    <?php if (empty($forms)) : ?>
         <div class="empty-state">
             <div class="empty-state-icon">
                 <i class="fas fa-file-alt"></i>
@@ -29,9 +29,9 @@ $forms = get_user_forms($_SESSION['user_id']);
             <h3>No Forms Yet</h3>
             <p>You haven't created any forms yet. Click the button above to get started.</p>
         </div>
-    <?php else: ?>
+    <?php else : ?>
         <div class="forms-list">
-            <?php foreach ($forms as $form): ?>
+            <?php foreach ($forms as $form) : ?>
                 <div class="form-card">
                     <div class="form-card-header">
                         <h3><?= htmlspecialchars($form['name']) ?></h3>
@@ -40,7 +40,7 @@ $forms = get_user_forms($_SESSION['user_id']);
                         </div>
                     </div>
                     
-                    <?php if (!empty($form['description'])): ?>
+                    <?php if (!empty($form['description'])) : ?>
                         <div class="form-card-description">
                             <?= htmlspecialchars($form['description']) ?>
                         </div>

@@ -379,16 +379,16 @@
     margin: 1rem;
     border-radius: 8px;
   }
-  
+
   .form-header {
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
   }
-  
+
   .public-form .form-group {
     margin-bottom: 1.5rem;
   }
-  
+
   .public-form input,
   .public-form textarea {
     padding: 0.8rem 0.8rem 0.8rem 2.5rem;
@@ -401,12 +401,12 @@
     width: 100%;
     padding: 0.8rem 1rem;
   }
-  
+
   .action-buttons {
     flex-direction: column;
     gap: 0.8rem;
   }
-  
+
   .action-buttons .btn {
     width: 100%;
   }

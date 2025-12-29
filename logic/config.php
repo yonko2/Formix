@@ -7,4 +7,4 @@ return [
     'DB_DATABASE' => getenv('DB_DATABASE') ?: 'formix',
     'DB_USERNAME' => getenv('DB_USERNAME') ?: 'root',
     'DB_PASSWORD' => getenv('DB_PASSWORD') ?: ''
-]; 
+];

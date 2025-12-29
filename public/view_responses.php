@@ -31,8 +31,7 @@ if ($submission_id) {
         $error_message = "Submission not found";
         $submission = null;
     }
-}
-else {
+} else {
     $submissions = get_form_submissions($form_id);
 }
 ?>
@@ -41,23 +40,23 @@ else {
 <div class="container">
     <div class="responses-header">
         <h2>
-            <?php if (isset($submission)): ?>
+            <?php if (isset($submission)) : ?>
                 Submission Details
-            <?php else: ?>
+            <?php else : ?>
                 Responses: <?= htmlspecialchars($form['name']) ?>
             <?php endif; ?>
         </h2>
         
         <div class="back-link">
-            <?php if (isset($submission)): ?>
+            <?php if (isset($submission)) : ?>
                 <a href="view_responses.php?id=<?= $form_id ?>" class="btn btn-secondary btn-sm">
                     <i class="fas fa-arrow-left"></i> Back to All Responses
                 </a>
-            <?php else: ?>
+            <?php else : ?>
                 <a href="my_forms.php" class="btn btn-secondary btn-sm">
                     <i class="fas fa-arrow-left"></i> Back to My Forms
                 </a>
-                <?php if (!empty($submissions)): ?>
+                <?php if (!empty($submissions)) : ?>
                 <a href="download_responses.php?id=<?= $form_id ?>" class="btn btn-success btn-sm">
                     <i class="fas fa-download"></i> Download as CSV
                 </a>
@@ -66,9 +65,9 @@ else {
         </div>
     </div>
     
-    <?php if ($error_message): ?>
+    <?php if ($error_message) : ?>
         <p class="error-message"><?= $error_message ?></p>
-    <?php elseif (isset($submission)): ?>
+    <?php elseif (isset($submission)) : ?>
         <div class="submission-detail">
             <div class="submission-meta">
                 <div class="meta-item">
@@ -76,13 +75,13 @@ else {
                     <span class="meta-value"><?= date('M j, Y, g:i a', strtotime($submission['submission_time'])) ?></span>
                 </div>
                 
-                <?php if ($form['require_auth']): ?>
+                <?php if ($form['require_auth']) : ?>
                 <div class="meta-item">
                     <span class="meta-label">Submitted by:</span>
                     <span class="meta-value">
-                        <?php if ($submission['user_id']): ?>
+                        <?php if ($submission['user_id']) : ?>
                             <i class="fas fa-user"></i> <?= htmlspecialchars($submission['user_email'] ?? 'Unknown user') ?>
-                        <?php else: ?>
+                        <?php else : ?>
                             Anonymous
                         <?php endif; ?>
                     </span>
@@ -93,11 +92,11 @@ else {
             <div class="submission-values">
                 <h3>Form Values</h3>
                 
-                <?php if (empty($submission['values'])): ?>
+                <?php if (empty($submission['values'])) : ?>
                     <p class="no-data">No data submitted.</p>
-                <?php else: ?>
+                <?php else : ?>
                     <div class="values-table">
-                        <?php foreach ($submission['values'] as $value): ?>
+                        <?php foreach ($submission['values'] as $value) : ?>
                             <div class="value-row">
                                 <div class="value-field"><?= htmlspecialchars($value['field_name']) ?>:</div>
                                 <div class="value-content"><?= htmlspecialchars($value['value']) ?></div>
@@ -107,8 +106,8 @@ else {
                 <?php endif; ?>
             </div>
         </div>
-    <?php else: ?>
-        <?php if (empty($submissions)): ?>
+    <?php else : ?>
+        <?php if (empty($submissions)) : ?>
             <div class="empty-state">
                 <div class="empty-state-icon">
                     <i class="fas fa-inbox"></i>
@@ -121,7 +120,7 @@ else {
                     </a>
                 </div>
             </div>
-        <?php else: ?>
+        <?php else : ?>
             <div class="submissions-summary">
                 <p><strong><?= count($submissions) ?></strong> response(s) received</p>
             </div>
@@ -129,23 +128,23 @@ else {
             <div class="submissions-table">
                 <div class="table-header" style="grid-template-columns: <?= $form['require_auth'] ? '2fr 2fr 1fr' : '3fr 1fr' ?>;">
                     <div class="header-cell">Submission Date</div>
-                    <?php if ($form['require_auth']): ?>
+                    <?php if ($form['require_auth']) : ?>
                         <div class="header-cell">Submitted By</div>
                     <?php endif; ?>
                     <div class="header-cell">Actions</div>
                 </div>
                 
-                <?php foreach ($submissions as $sub): ?>
+                <?php foreach ($submissions as $sub) : ?>
                     <div class="table-row" style="grid-template-columns: <?= $form['require_auth'] ? '2fr 2fr 1fr' : '3fr 1fr' ?>;">
                         <div class="table-cell">
                             <?= date('M j, Y, g:i a', strtotime($sub['submission_time'])) ?>
                         </div>
                         
-                        <?php if ($form['require_auth']): ?>
+                        <?php if ($form['require_auth']) : ?>
                             <div class="table-cell">
-                                <?php if ($sub['user_id']): ?>
+                                <?php if ($sub['user_id']) : ?>
                                     <i class="fas fa-user"></i> <?= htmlspecialchars($sub['user_email'] ?? 'Unknown user') ?>
-                                <?php else: ?>
+                                <?php else : ?>
                                     Anonymous
                                 <?php endif; ?>
                             </div>

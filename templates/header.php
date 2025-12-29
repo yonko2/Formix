@@ -13,7 +13,7 @@
     
     <?php
     $current_page = basename($_SERVER['PHP_SELF'], '.php');
-    
+
     switch ($current_page) {
         case 'index':
             echo '<link rel="stylesheet" href="assets/css/pages/home.css">';
@@ -66,7 +66,9 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     
-    <?php if (isset($page_specific_styles)) { echo $page_specific_styles; } ?>
+    <?php if (isset($page_specific_styles)) {
+        echo $page_specific_styles;
+    } ?>
 </head>
 
 <body>
@@ -76,12 +78,12 @@
         </div>
         <div class="nav-links">
             <a href="index.php">Home</a>
-            <?php if (isset($_SESSION['user_id'])): ?>
+            <?php if (isset($_SESSION['user_id'])) : ?>
                 <a href="create_form.php">Create Form</a>
                 <a href="my_forms.php">My Forms</a>
                 <a href="my_answers.php">My Answers</a>
                 <a href="logout.php">Logout</a>
-            <?php else: ?>
+            <?php else : ?>
                 <a href="login.php">Login</a>
                 <a href="register.php">Register</a>
             <?php endif; ?>

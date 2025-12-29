@@ -16,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
     $redirect = $_POST['redirect'] ?? 'index.php';
-    
+
     $message = login_user($email, $password);
-    
+
     if (!$message) {
         header('Location: ' . $redirect);
         exit;
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <button type="submit">Sign In</button>
         
-        <?php if ($message): ?>
+        <?php if ($message) : ?>
             <p class="error-message"><?= $message ?></p>
         <?php endif; ?>
         

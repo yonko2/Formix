@@ -29,7 +29,7 @@ session_start();
         </div>
     </div>
 
-    <?php if (!isset($_SESSION['user_id'])): ?>
+    <?php if (!isset($_SESSION['user_id'])) : ?>
     <div class="cta-container">
         <div class="cta-content">
             <h2>Get Started Today</h2>

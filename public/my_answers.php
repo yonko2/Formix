@@ -24,16 +24,16 @@ $submissions = get_user_submissions($_SESSION['user_id']);
         </div>
     </div>
     
-    <?php if (empty($submissions)): ?>
+    <?php if (empty($submissions)) : ?>
         <div class="empty-answers">
             <i class="far fa-clipboard"></i>
             <h3>No responses yet</h3>
             <p>You haven't submitted any forms yet. Once you do, they will appear here.</p>
             <a href="index.php" class="btn btn-primary">Browse Forms</a>
         </div>
-    <?php else: ?>
+    <?php else : ?>
         <div class="submissions-list">
-            <?php foreach ($submissions as $submission): ?>
+            <?php foreach ($submissions as $submission) : ?>
                 <div class="submission-card">
                     <div class="submission-header">
                         <h3 class="submission-title"><?= htmlspecialchars($submission['form_name']) ?></h3>
@@ -47,18 +47,18 @@ $submissions = get_user_submissions($_SESSION['user_id']);
                     
                     <div class="submission-content">
                         <ul class="preview-values">
-                            <?php if (empty($submission['preview_values'])): ?>
+                            <?php if (empty($submission['preview_values'])) : ?>
                                 <li class="preview-value">
                                     <div class="field-value empty">No response data available</div>
                                 </li>
-                            <?php else: ?>
-                                <?php foreach ($submission['preview_values'] as $value): ?>
+                            <?php else : ?>
+                                <?php foreach ($submission['preview_values'] as $value) : ?>
                                     <li class="preview-value">
                                         <div class="field-label"><?= htmlspecialchars($value['field_name']) ?></div>
                                         <div class="field-value">
-                                            <?php if (empty($value['value'])): ?>
+                                            <?php if (empty($value['value'])) : ?>
                                                 <span class="empty">No answer provided</span>
-                                            <?php else: ?>
+                                            <?php else : ?>
                                                 <?= htmlspecialchars(substr($value['value'], 0, 100)) ?><?= strlen($value['value']) > 100 ? '...' : '' ?>
                                             <?php endif; ?>
                                         </div>

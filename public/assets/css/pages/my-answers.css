@@ -195,31 +195,31 @@
   .submission-header {
     padding: 1rem;
   }
-  
+
   .submission-content {
     padding: 1rem;
   }
-  
+
   .preview-value {
     flex-direction: column;
   }
-  
+
   .field-label {
     flex: none;
     margin-bottom: 0.3rem;
   }
-  
+
   .submission-meta {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .submission-footer {
     text-align: center;
     padding: 1rem;
   }
-  
+
   .view-details {
     display: block;
     margin: 0.8rem 0 0;

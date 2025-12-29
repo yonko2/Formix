@@ -33,12 +33,12 @@ $form_url = "{$protocol}://{$host}{$path}/fill_form.php?id={$form_id}";
 <div class="container">
     <h2>Publish Form: <?= htmlspecialchars($form['name']) ?></h2>
     
-    <?php if (empty($fields)): ?>
+    <?php if (empty($fields)) : ?>
         <div class="alert alert-warning">
             <i class="fas fa-exclamation-triangle"></i>
             <p>This form doesn't have any fields yet. <a href="edit_form.php?id=<?= $form_id ?>">Add some fields</a> before publishing.</p>
         </div>
-    <?php else: ?>
+    <?php else : ?>
         <div class="publish-container">
             <div class="publish-section">
                 <h3><i class="fas fa-link"></i> Share Your Form</h3>
@@ -64,17 +64,17 @@ $form_url = "{$protocol}://{$host}{$path}/fill_form.php?id={$form_id}";
                         <div class="setting-info">
                             <div class="setting-name">Password Protection</div>
                             <div class="setting-value">
-                                <?php if (!empty($form['password'])): ?>
+                                <?php if (!empty($form['password'])) : ?>
                                     <span class="status-enabled"><i class="fas fa-lock"></i> Enabled</span>
-                                <?php else: ?>
+                                <?php else : ?>
                                     <span class="status-disabled"><i class="fas fa-unlock"></i> Disabled</span>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="setting-description">
-                            <?php if (!empty($form['password'])): ?>
+                            <?php if (!empty($form['password'])) : ?>
                                 Users will need to enter a password to access this form.
-                            <?php else: ?>
+                            <?php else : ?>
                                 Anyone with the link can access this form without a password.
                             <?php endif; ?>
                         </div>
@@ -84,17 +84,17 @@ $form_url = "{$protocol}://{$host}{$path}/fill_form.php?id={$form_id}";
                         <div class="setting-info">
                             <div class="setting-name">Multiple Submissions</div>
                             <div class="setting-value">
-                                <?php if ($form['allow_multiple_submissions']): ?>
+                                <?php if ($form['allow_multiple_submissions']) : ?>
                                     <span class="status-enabled"><i class="fas fa-check-circle"></i> Allowed</span>
-                                <?php else: ?>
+                                <?php else : ?>
                                     <span class="status-disabled"><i class="fas fa-times-circle"></i> Not Allowed</span>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="setting-description">
-                            <?php if ($form['allow_multiple_submissions']): ?>
+                            <?php if ($form['allow_multiple_submissions']) : ?>
                                 Users can submit this form multiple times.
-                            <?php else: ?>
+                            <?php else : ?>
                                 Users can only submit this form once.
                             <?php endif; ?>
                         </div>
@@ -104,17 +104,17 @@ $form_url = "{$protocol}://{$host}{$path}/fill_form.php?id={$form_id}";
                         <div class="setting-info">
                             <div class="setting-name">Authentication Required</div>
                             <div class="setting-value">
-                                <?php if ($form['require_auth']): ?>
+                                <?php if ($form['require_auth']) : ?>
                                     <span class="status-enabled"><i class="fas fa-user-lock"></i> Required</span>
-                                <?php else: ?>
+                                <?php else : ?>
                                     <span class="status-disabled"><i class="fas fa-user-check"></i> Not Required</span>
                                 <?php endif; ?>
                             </div>
                         </div>
                         <div class="setting-description">
-                            <?php if ($form['require_auth']): ?>
+                            <?php if ($form['require_auth']) : ?>
                                 Users must be logged in to submit this form. Submissions will be linked to user accounts.
-                            <?php else: ?>
+                            <?php else : ?>
                                 Anyone can submit this form without logging in. Submissions will be anonymous.
                             <?php endif; ?>
                         </div>

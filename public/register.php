@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
     $message = register_user($email, $password);
-    
+
     if ($message === "Registration successful.") {
         $success = true;
     }
@@ -25,13 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container">
     <h2>Create Your Account</h2>
     
-    <?php if ($success): ?>
+    <?php if ($success) : ?>
         <div class="success-message">
             <i class="fas fa-check-circle"></i>
             <p>Your account has been created successfully!</p>
             <p>You can now <a href="login.php">log in</a> to your account.</p>
         </div>
-    <?php else: ?>
+    <?php else : ?>
         <form method="POST">
             <div class="form-group">
                 <label for="email">Email</label>
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <button type="submit">Register</button>
             
-            <?php if ($message && $message !== "Registration successful."): ?>
+            <?php if ($message && $message !== "Registration successful.") : ?>
                 <p class="error-message"><?= $message ?></p>
             <?php endif; ?>
             

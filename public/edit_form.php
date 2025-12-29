@@ -30,20 +30,19 @@ $fields = get_form_fields($form_id);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
-    
+
 
     if ($action === 'add_field') {
         $field_type = $_POST['field_type'] ?? '';
         $field_name = $_POST['field_name'] ?? '';
         $field_order = count($fields) + 1;
         $is_required = isset($_POST['is_required']) ? 1 : 0;
-        
+
         if (empty($field_name) || empty($field_type)) {
             $message = "Field name and type are required";
         } else {
             $field_id = add_form_field($form_id, $field_type, $field_name, $field_order, $is_required);
             if ($field_id) {
-
                 $fields = get_form_fields($form_id);
                 $message = "Field added successfully";
             } else {
@@ -51,12 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
-    
+
 
     if ($action === 'delete_field' && isset($_POST['field_id'])) {
         $field_id = $_POST['field_id'];
         if (delete_form_field($field_id)) {
-
             $fields = get_form_fields($form_id);
             $message = "Field deleted successfully";
         } else {
@@ -76,7 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-function get_field_type_label($type) {
+function get_field_type_label($type)
+{
     switch ($type) {
         case 'text':
             return 'Text Input';
@@ -96,7 +95,7 @@ function get_field_type_label($type) {
 <div class="container">
     <h2>Edit Form: <?= htmlspecialchars($form['name']) ?></h2>
     
-    <?php if ($message): ?>
+    <?php if ($message) : ?>
         <p class="<?= strpos($message, 'success') !== false ? 'success-message' : 'error-message' ?>"><?= $message ?></p>
     <?php endif; ?>
     
@@ -109,11 +108,11 @@ function get_field_type_label($type) {
         <div class="form-section">
             <div class="section-title">Form Fields</div>
             
-            <?php if (empty($fields)): ?>
+            <?php if (empty($fields)) : ?>
                 <p>Your form has no fields yet. Add some fields below.</p>
-            <?php else: ?>
+            <?php else : ?>
                 <div class="fields-list" id="fieldsContainer">
-                    <?php foreach ($fields as $field): ?>
+                    <?php foreach ($fields as $field) : ?>
                         <div class="field-item" data-field-id="<?= $field['id'] ?>">
                             <div class="field-header">
                                 <div>
@@ -132,7 +131,7 @@ function get_field_type_label($type) {
                             </div>
                             <div class="field-body">
                                 <strong><?= htmlspecialchars($field['name']) ?></strong>
-                                <?php if ($field['is_required']): ?>
+                                <?php if ($field['is_required']) : ?>
                                     <span class="field-required">*Required</span>
                                 <?php endif; ?>
                             </div>

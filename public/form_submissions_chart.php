@@ -53,7 +53,7 @@ $chart_data = get_form_submissions_chart_data($form_id, $days_range);
         <canvas id="submissionsChart"></canvas>
     </div>
     
-    <?php if (array_sum($chart_data['data']) == 0): ?>
+    <?php if (array_sum($chart_data['data']) == 0) : ?>
         <div class="no-data-message">
             <p>No submissions found in the selected time period.</p>
             <div class="actions">

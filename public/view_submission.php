@@ -26,7 +26,7 @@ if (!$submission || $submission['user_id'] != $_SESSION['user_id']) {
 <?php include '../templates/header.php'; ?>
 
 <div class="container">
-    <?php if ($error_message): ?>
+    <?php if ($error_message) : ?>
         <div class="error-message">
             <i class="fas fa-exclamation-circle"></i>
             <p><?= $error_message ?></p>
@@ -34,7 +34,7 @@ if (!$submission || $submission['user_id'] != $_SESSION['user_id']) {
                 <a href="my_answers.php" class="btn btn-primary">Back to My Answers</a>
             </div>
         </div>
-    <?php else: ?>
+    <?php else : ?>
         <div class="submission-container">
             <div class="submission-header">
                 <a href="my_answers.php" class="back-link">
@@ -50,36 +50,36 @@ if (!$submission || $submission['user_id'] != $_SESSION['user_id']) {
             </div>
             
             <div class="submission-content">
-                <?php if (empty($submission['values'])): ?>
+                <?php if (empty($submission['values'])) : ?>
                     <p class="no-values">This submission has no values.</p>
-                <?php else: ?>
+                <?php else : ?>
                     <div class="values-list">
-                        <?php foreach ($submission['values'] as $value): ?>
+                        <?php foreach ($submission['values'] as $value) : ?>
                             <div class="value-item value-type-<?= htmlspecialchars($value['field_type']) ?>">
                                 <div class="value-label">
                                     <span class="field-icon">
-                                        <?php if ($value['field_type'] === 'text'): ?>
+                                        <?php if ($value['field_type'] === 'text') : ?>
                                             <i class="fas fa-font"></i>
-                                        <?php elseif ($value['field_type'] === 'number'): ?>
+                                        <?php elseif ($value['field_type'] === 'number') : ?>
                                             <i class="fas fa-hashtag"></i>
-                                        <?php elseif ($value['field_type'] === 'textarea'): ?>
+                                        <?php elseif ($value['field_type'] === 'textarea') : ?>
                                             <i class="fas fa-align-left"></i>
                                         <?php endif; ?>
                                     </span>
                                     <h3><?= htmlspecialchars($value['field_name']) ?></h3>
                                 </div>
                                 <div class="value-content">
-                                    <?php if (empty($value['value'])): ?>
+                                    <?php if (empty($value['value'])) : ?>
                                         <p class="empty-value"><i>No answer provided</i></p>
-                                    <?php elseif ($value['field_type'] === 'textarea'): ?>
+                                    <?php elseif ($value['field_type'] === 'textarea') : ?>
                                         <p class="textarea-value"><?= nl2br(htmlspecialchars($value['value'])) ?></p>
-                                    <?php elseif ($value['field_type'] === 'file'): ?>
+                                    <?php elseif ($value['field_type'] === 'file') : ?>
                                         <a href="download_file.php?filename=<?= urlencode($value['value']) ?>" class="file-download-link" target="_blank">
                                             <i class="fas fa-download"></i>
                                             Download File
                                         </a>
                                         <p class="filename-display">(<?= htmlspecialchars($value['value']) ?>)</p>
-                                    <?php else: ?>
+                                    <?php else : ?>
                                         <p><?= htmlspecialchars($value['value']) ?></p>
                                     <?php endif; ?>
                                 </div>

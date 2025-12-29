@@ -27,6 +27,8 @@ $RECYCLE.BIN/
 /data/
 /files/
 
+/vendor
+
 # Playwright
 node_modules/
 /test-results/
