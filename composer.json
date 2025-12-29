@@ -1,0 +1,14 @@
+{
+    "name": "formix/formix",
+    "description": "Form Management System",
+    "type": "project",
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7"
+    },
+    "scripts": {
+        "lint": "phpcs --standard=PSR12 logic/ public/ templates/"
+    }
+}

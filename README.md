@@ -86,3 +86,47 @@ formix/
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details. 
+## DevOps & Deployment
+
+This project includes a complete DevOps pipeline with Docker, Kubernetes, and CI/CD.
+
+### Local Development with Docker
+
+1.  Start the application and database:
+    \\\ash
+    docker-compose up -d
+    \\\
+2.  Access the app at \http://localhost:8080\.
+
+### Testing
+
+Run End-to-End tests with Playwright:
+
+```bash
+npm install
+npx playwright test
+```
+
+Run PHP Linting (PHPCS):
+
+```bash
+composer install
+composer lint
+```
+
+### Kubernetes Deployment
+
+Manifests are located in the \k8s/\ directory.
+
+\\\ash
+kubectl apply -f k8s/
+\\\
+
+### CI/CD
+
+The GitHub Actions workflow `.github/workflows/ci-cd.yml` handles:
+-   Linting (PHPCS)
+-   Building Docker Image
+-   Running Playwright Tests
+-   Deployment to Kubernetes
+
