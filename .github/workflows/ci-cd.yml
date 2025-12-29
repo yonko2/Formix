@@ -33,29 +33,25 @@ jobs:
         run: docker build -t formix-app:latest .
 
       - name: Start Services
-        if: github.event_name != 'pull_request' || !github.event.pull_request.draft
         run: docker compose up -d
 
       - name: Wait for MySQL
-        if: github.event_name != 'pull_request' || !github.event.pull_request.draft
         run: sleep 30
 
       - name: Setup Node.js
-        if: github.event_name != 'pull_request' || !github.event.pull_request.draft
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
       - name: Install Dependencies
-        if: github.event_name != 'pull_request' || !github.event.pull_request.draft
         run: npm install
 
       - name: Install Playwright Browsers
-        if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft
         run: npx playwright install --with-deps
 
       - name: Run Playwright Tests
-        if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft
         run: npx playwright test
 
       - name: Stop Services

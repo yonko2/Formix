@@ -10,10 +10,15 @@ test('can login', async ({ page }) => {
 
   await page.fill('input[name="email"]', 'admin@example.com');
   await page.fill('input[name="password"]', 'password');
+  
+  // Take screenshot before login
+  await page.screenshot({ path: 'test-results/login-page.png' });
+  
   await page.click('button[type="submit"]');
 
   // Expect to be redirected to home and see "Logout" or similar
   await expect(page).toHaveURL(/\/index\.php/);
-  // Assuming there is a logout link when logged in
-  // await expect(page.getByText('Logout')).toBeVisible();
+  
+  // Take screenshot after login
+  await page.screenshot({ path: 'test-results/home-page-logged-in.png' });
 });
