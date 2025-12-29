@@ -34,7 +34,7 @@ jobs:
 
     - name: Start Services
       if: github.event_name != 'pull_request' || !github.event.pull_request.draft
-      run: docker-compose up -d
+      run: docker compose up -d
 
     - name: Wait for MySQL
       if: github.event_name != 'pull_request' || !github.event.pull_request.draft
@@ -60,7 +60,7 @@ jobs:
 
     - name: Stop Services
       if: always()
-      run: docker-compose down
+      run: docker compose down
 
   deploy:
     needs: [build-and-test]
