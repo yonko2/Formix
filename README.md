@@ -126,6 +126,7 @@ npx playwright test
 ```
 
 Update linux screenshots
+
 ```bash
 npm install
 docker compose down
