@@ -8,7 +8,19 @@ on:
     types: [ready_for_review]
 
 jobs:
-  lint:
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Run markdownlint test
+        run: markdownlint ./README.md
+
+  php-lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +39,7 @@ jobs:
         run: composer lint
 
   sonarqube:
-    needs: [lint]
+    needs: [php-lint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -46,7 +58,7 @@ jobs:
             -Dsonar.organization=yonko2
 
   deploy-image:
-    needs: [lint]
+    needs: [php-lint]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
