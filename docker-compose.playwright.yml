@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.57.0-jammy
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - BASE_URL=http://localhost
+      - CI=true
+    network_mode: service:app
+    ipc: host
+    command: /bin/bash -c "npm install && npx playwright test"
+    depends_on:
+      - app

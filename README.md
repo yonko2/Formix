@@ -120,7 +120,7 @@ Run End-to-End tests with Playwright:
 
 ```bash
 npm install
-docker compose up -d --force-recreate
+docker compose up -d
 npx playwright test
 ```
 
