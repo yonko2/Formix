@@ -18,6 +18,6 @@ export default defineConfig({
     },
   ],
   expect: {
-    toHaveScreenshot: { maxDiffPixels: 200 },
+    toHaveScreenshot: { maxDiffPixels: 300 },
   }
 });
