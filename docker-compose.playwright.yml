@@ -12,6 +12,6 @@ services:
       - CI=true
     network_mode: service:app
     ipc: host
-    command: /bin/bash -c "npm install && npx playwright test"
+    command: /bin/bash -c "npm install && npx playwright test --update-snapshots"
     depends_on:
       - app
