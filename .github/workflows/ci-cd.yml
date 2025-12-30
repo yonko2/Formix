@@ -39,7 +39,6 @@ jobs:
         run: composer lint
 
   sonarqube:
-    needs: [php-lint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -57,8 +56,13 @@ jobs:
             -Dsonar.projectKey=yonko2_Formix
             -Dsonar.organization=yonko2
 
+  playwright:
+    needs: [php-lint, sonarqube]
+    if: ${{ github.event.pull_request.merged }}
+    uses: ./.github/workflows/playwright.yml
+
   deploy-image:
-    needs: [php-lint]
+    needs: [php-lint, sonarqube]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
