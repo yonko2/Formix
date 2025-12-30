@@ -61,3 +61,20 @@ jobs:
       - name: Stop Services
         if: always()
         run: docker compose down
+
+      - name: Comment on PR
+        if: always() && github.event_name == 'pull_request' && github.event.action == 'ready_for_review'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { repo, owner } = context.repo;
+            const result = '${{ job.status }}';
+            const runUrl = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
+            const emoji = result === 'success' ? '✅' : '❌';
+            
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: context.issue.number,
+              body: `${emoji} Playwright Tests completed with status: **${result}**\n\n[View Workflow Run](${runUrl})`
+            });

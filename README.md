@@ -120,6 +120,7 @@ Run End-to-End tests with Playwright:
 
 ```bash
 npm install
+docker compose up -d --force-recreate
 npx playwright test
 ```
 
@@ -128,14 +129,6 @@ Run PHP Linting (PHPCS):
 ```bash
 composer install
 composer lint
-```
-
-### Kubernetes Deployment
-
-Manifests are located in the `k8s/` directory.
-
-```bash
-kubectl apply -f k8s/
 ```
 
 ### CI/CD
