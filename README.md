@@ -93,9 +93,9 @@ This project includes a complete DevOps pipeline with Docker, Kubernetes, and CI
 ### Local Development with Docker
 
 1.  Start the application and database:
-    \\\ash
+    ```bash
     docker-compose up -d
-    \\\
+    ```
 2.  Access the app at \http://localhost:8080\.
 
 ### Testing
@@ -118,15 +118,18 @@ composer lint
 
 Manifests are located in the \k8s/\ directory.
 
-\\\ash
+```bash
 kubectl apply -f k8s/
-\\\
+```
 
 ### CI/CD
 
 The GitHub Actions workflow `.github/workflows/ci-cd.yml` handles:
 -   Linting (PHPCS)
+-   SonarQube analysis
 -   Building Docker Image
--   Running Playwright Tests
 -   Deployment to Kubernetes
+
+Separately, on PR ready for review, the `.github/workflows/playwright.yml` handles
+-   Playwright
 
