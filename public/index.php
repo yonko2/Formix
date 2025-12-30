@@ -5,7 +5,7 @@ session_start();
 
 <div class="hero">
     <div class="hero-content">
-        <h1>Collect Data Effortlessly</h1>
+        <h1>Collect Data Effortlessakdsfklasndklfly</h1>
         <p>Create beautiful forms, surveys, and questionnaires with Formica. Gather insights, analyze responses, and make data-driven decisions.</p>
     </div>
 </div>
