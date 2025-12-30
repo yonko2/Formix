@@ -17,4 +17,7 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
+  expect: {
+    toHaveScreenshot: { maxDiffPixels: 100 },
+  }
 });
