@@ -1,9 +1,6 @@
 name: Playwright Tests
 
 on:
-  pull_request:
-    branches: [master]
-    types: [ready_for_review]
   workflow_call:
 
 jobs:
@@ -71,7 +68,7 @@ jobs:
             const result = '${{ job.status }}';
             const runUrl = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
             const emoji = result === 'success' ? '✅' : '❌';
-            
+
             await github.rest.issues.createComment({
               owner,
               repo,
