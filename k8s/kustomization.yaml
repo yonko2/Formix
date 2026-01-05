@@ -1,0 +1,8 @@
+resources:
+- app-deployment.yaml
+- mysql-deployment.yaml
+
+configMapGenerator:
+- name: mysql-init-script
+  files:
+  - init.sql=../docker/init.sql
