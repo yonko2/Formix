@@ -102,10 +102,8 @@ jobs:
           # Update image name in manifest
           sed -i 's|image: formix-app:latest|image: ${{ secrets.DOCKER_USERNAME }}/formix-app:latest|g' k8s/app-deployment.yaml
           
-          # Apply manifests
-          kubectl apply -f k8s/
+          kubectl apply -k k8s/
           
-          # Wait for deployment
           kubectl rollout status deployment/formix-app --timeout=120s
 
       - name: Verify Application Deployment
