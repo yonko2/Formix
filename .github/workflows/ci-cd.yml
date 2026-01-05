@@ -99,11 +99,10 @@ jobs:
 
       - name: Deploy to k3d
         run: |
-          # Update image name in manifest
           sed -i 's|image: formix-app:latest|image: ${{ secrets.DOCKER_USERNAME }}/formix-app:latest|g' k8s/app-deployment.yaml
-          
+
           kubectl kustomize --load-restrictor LoadRestrictionsNone k8s/ | kubectl apply -f -
-          
+
           kubectl rollout status deployment/formix-app --timeout=120s
 
       - name: Verify Application Deployment
