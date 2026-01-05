@@ -58,7 +58,6 @@ jobs:
 
   playwright:
     needs: [php-lint, sonarqube]
-    if: ${{ github.event.pull_request.merged }}
     uses: ./.github/workflows/playwright.yml
 
   deploy-image:
